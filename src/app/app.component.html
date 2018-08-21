@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Angular Learning- Tabibi</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Home
+          <span class="sr-only">(current)</span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
@@ -18,8 +21,30 @@
   </div>
 </nav>
 
-<div class="row container-fluid">
-  <div class="col-md-12">
-    <h3>Title: This is a new title</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Title: This is a new title</h3>
+      <button (click)="showOnlyOdd = !showOnlyOdd" type="button" class="btn btn-primary">
+        {{showOnlyOdd ? 'Only Show Odd Numbers' : 'Show All Numbers'}}
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li *ngFor="let n of numbers" class="list-group-item">
+          <div *ngIf="showOnlyOdd">
+            <p *ngIf="(n % 2) != 0">
+              {{n}}
+            </p>
+          </div>
+          <div *ngIf="!showOnlyOdd">
+            {{n}}
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
