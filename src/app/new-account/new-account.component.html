@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label for="accountName"></label>
+  <input type="text"
+    class="form-control"
+    name="accountName"
+    id="accountName"
+    aria-describedby="helpId"
+    placeholder="type new account name"
+    (blur)="txtAccountNameBlue($event)">
+</div>
+<div class="form-group">
+  <button (click)="onAddClicked()" class="btn btn-primary">Add</button>
+</div>
+

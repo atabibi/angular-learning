@@ -19,7 +19,14 @@
 </nav>
 
 <div class="row container-fluid">
-  <div class="col-md-12">
-    <h3>Title: This is a new title</h3>
+  <div class="col-md-8">
+    <ul class="list-group">
+      <li *ngFor="let acc of accounts, let i=index" class="list-group-item">
+        <app-account [account]='acc' [id]="i" (statusChanged)= "onChangeState($event)"></app-account>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <app-new-account (addNewAccount)="onAddNewAccount($event)"></app-new-account>
   </div>
 </div>
