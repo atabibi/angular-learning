@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { AccountsService } from '../accounts.service';
 
 @Component({
   selector: 'app-account',
@@ -8,16 +9,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class AccountComponent implements OnInit {
 
   @Input() account: {name: string, status: string};
-  @Output() statusChanged = new EventEmitter<{id: number, status: string}>();
   @Input() id: number;
 
-  constructor() { }
+  constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
   }
 
   onClick(newState: string) {
-    const accountName = this.account.name;
-    this.statusChanged.emit({id: this.id, status: newState});
+    this.accountsService.changeState({id: this.id, status: newState});
   }
 }
