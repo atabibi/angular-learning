@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggingService } from './logging.service';
 
 @Component({
   selector: 'app-root',
@@ -27,12 +28,15 @@ export class AppComponent {
     },
   ];
 
+  constructor(private logging: LoggingService) { }
+
   onChangeState(account: {id: number, status: string}) {
-    console.log(account);
+    this.logging.showMessage(account.id + ' status changed to ' + account.status);
     this.accounts[account.id].status = account.status;
   }
 
   onAddNewAccount(accountName) {
     this.accounts.push({name: accountName, status: 'unknown'});
+    this.logging.showMessage(accountName + ' has created!');
   }
 }
